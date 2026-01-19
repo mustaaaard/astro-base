@@ -23,14 +23,16 @@
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.6",
     "astro-icon": "^1.1.5",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.24.7",
+    "motion": "^12.27.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "sass": "^1.97.2",
+    "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@astrojs/eslint-config": "^0.2.0",
     "@tailwindcss/typography": "^0.5.19",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",

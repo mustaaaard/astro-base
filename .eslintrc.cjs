@@ -40,6 +40,9 @@ module.exports = {
         parser: "@typescript-eslint/parser",
         extraFileExtensions: [".astro"],
       },
+      rules: {
+        "react/no-unknown-property": "off",
+      },
     },
   ],
   settings: {
