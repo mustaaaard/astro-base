@@ -10,3 +10,27 @@ export const SITE = {
 	// Leave empty to disable form submissions
 	web3formsAccessKey: "8e35f400-3b08-482c-a088-47b519e99137", // e.g., "YOUR_ACCESS_KEY_HERE"
 };
+
+export const NAV_LINKS = [
+	{ label: "Links", href: "/links" },
+	// { label: "About", href: "/about" },
+	// { label: "Contact", href: "/contact" },
+];
+
+export const SOCIAL_LINKS = [
+	{
+		label: "Instagram",
+		href: "https://www.instagram.com/_mlkkrt/",
+		icon: "tabler:brand-instagram",
+	},
+	{
+		label: "TikTok",
+		href: "https://www.tiktok.com/@_mlkkrt",
+		icon: "tabler:brand-tiktok",
+	},
+	{
+		label: "Email",
+		href: "mailto:hello@mlkkrt.com?subject=Quick%20Hello!&body=Hi%20there%2C%0A%0AI%20wanted%20to%20reach%20out%20about%20",
+		icon: "tabler:mail",
+	},
+];
