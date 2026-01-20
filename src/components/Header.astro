@@ -1,140 +1,229 @@
 ---
+import { SITE } from "@/config/site.mjs";
 import { Icon } from "astro-icon/components";
+
+interface Props {
+	variant?: "editorial" | "default";
+}
+
+const { variant = "default" } = Astro.props;
+const isHomePage = Astro.url.pathname === "/";
 ---
 
-<header
-	class="w-full py-4 px-4 border-b border-gray-200 bg-white sticky top-0 z-50"
-	role="banner"
->
-	<nav
-		class="max-w-6xl mx-auto flex items-center justify-between"
-		aria-label="Main navigation"
-	>
-		<a
-			href="/"
-			class="text-2xl font-bold text-gray-900 hover:text-gray-700 transition-colors"
-			aria-label="Milk Krate - Home"
+{
+	variant === "editorial" ? (
+		<header class="w-full bg-white text-black py-16 px-4" role="banner">
+			<div class="max-w-6xl mx-auto">
+				<!-- Large Logo -->
+				<h1 class="text-center mb-12">
+					{isHomePage ? (
+						<span class="block">
+							<div class="px-8 2xl:max-w-7xl mx-auto">
+								<img
+									src="/header_logo.svg"
+									alt="Milk Krate"
+									class="w-full max-w-4xl mx-auto"
+								/>
+							</div>
+						</span>
+					) : (
+						<a
+							href="/"
+							class="block hover:opacity-80 transition-opacity"
+							aria-label="Milk Krate - Home"
+						>
+							<div class="px-8 2xl:max-w-7xl mx-auto">
+								<img
+									src="/header_logo.svg"
+									alt="Milk Krate"
+									class="w-full max-w-4xl mx-auto"
+								/>
+							</div>
+						</a>
+					)}
+				</h1>
+
+				<!-- Navigation below -->
+				<nav class="flex justify-center" aria-label="Main navigation">
+					<ul class="flex flex-wrap justify-center gap-6 md:gap-8 text-lg md:text-xl font-display">
+						<li>
+							<a
+								href="/links"
+								class="hover:text-gray-700 transition-colors"
+								aria-current={Astro.url.pathname === "/links" ? "page" : undefined}
+							>
+								Links
+							</a>
+						</li>
+						<li>
+							<a
+								href="/about"
+								class="hover:text-gray-700 transition-colors"
+								aria-current={Astro.url.pathname === "/about" ? "page" : undefined}
+							>
+								About
+							</a>
+						</li>
+						<li>
+							<a
+								href="/contact"
+								class="hover:text-gray-700 transition-colors"
+								aria-current={Astro.url.pathname === "/contact" ? "page" : undefined}
+							>
+								Contact
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+	) : (
+		<header
+			class="w-full py-4 px-4 border-b border-gray-200 bg-white sticky top-0 z-50"
+			role="banner"
 		>
-			Milk Krate
-		</a>
+			<nav
+				class="max-w-6xl mx-auto flex items-center justify-between"
+				aria-label="Main navigation"
+			>
+				{isHomePage ? (
+					<span>
+						<img src="/header_logo.svg" alt={SITE.title} class="h-8 mx-auto" />
+					</span>
+				) : (
+					<a
+						href="/"
+						aria-label="Milk Krate - Home"
+					>
+						<img src="/header_logo.svg" alt={SITE.title} class="h-8 mx-auto" />
+					</a>
+				)}
 
-		<!-- Mobile menu button -->
-		<button
-			type="button"
-			class="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded-lg"
-			aria-label="Toggle menu"
-			aria-expanded="false"
-			aria-controls="mobile-menu"
-			id="mobile-menu-button"
-		>
-			<Icon name="tabler:menu-2" class="w-6 h-6" aria-hidden="true" />
-		</button>
 
-		<!-- Desktop navigation -->
-		<ul class="hidden md:flex items-center gap-6" role="list">
-			<li>
-				<a
-					href="/features"
-					class="text-gray-600 hover:text-gray-900 transition-colors"
-					aria-current={Astro.url.pathname === "/features" ? "page" : undefined}
-				>
-					Features
-				</a>
-			</li>
-			<li>
-				<a
-					href="/about"
-					class="text-gray-600 hover:text-gray-900 transition-colors"
-					aria-current={Astro.url.pathname === "/about" ? "page" : undefined}
-				>
-					About
-				</a>
-			</li>
-			<li>
-				<a
-					href="/contact"
-					class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
-					aria-current={Astro.url.pathname === "/contact" ? "page" : undefined}
-				>
-					Contact
-				</a>
-			</li>
-		</ul>
-	</nav>
 
-	<!-- Mobile menu -->
-	<div
-		id="mobile-menu"
-		class="hidden md:hidden border-t border-gray-200 bg-white"
-		role="menu"
-		aria-labelledby="mobile-menu-button"
-	>
-		<ul class="flex flex-col py-4" role="list">
-			<li>
-				<a
-					href="/features"
-					class="block px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
-					role="menuitem"
-					aria-current={Astro.url.pathname === "/features" ? "page" : undefined}
+				<!-- Mobile menu button -->
+				<button
+					type="button"
+					class="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 rounded-lg"
+					aria-label="Toggle menu"
+					aria-expanded="false"
+					aria-controls="mobile-menu"
+					id="mobile-menu-button"
 				>
-					Features
-				</a>
-			</li>
-			<li>
-				<a
-					href="/about"
-					class="block px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
-					role="menuitem"
-					aria-current={Astro.url.pathname === "/about" ? "page" : undefined}
-				>
-					About
-				</a>
-			</li>
-			<li>
-				<a
-					href="/contact"
-					class="block px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
-					role="menuitem"
-					aria-current={Astro.url.pathname === "/contact" ? "page" : undefined}
-				>
-					Contact
-				</a>
-			</li>
-		</ul>
-	</div>
-</header>
+					<Icon name="tabler:menu-2" class="w-6 h-6" aria-hidden="true" />
+				</button>
 
-<script>
-	// Mobile menu toggle functionality
-	const menuButton = document.getElementById("mobile-menu-button");
-	const mobileMenu = document.getElementById("mobile-menu");
+				<!-- Desktop navigation -->
+				<ul class="hidden md:flex items-center gap-6" role="list">
+					<li>
+						<a
+							href="/links"
+							class="text-gray-600 hover:text-gray-900 transition-colors"
+							aria-current={Astro.url.pathname === "/links" ? "page" : undefined}
+						>
+							Links
+						</a>
+					</li>
+					<li>
+						<a
+							href="/about"
+							class="text-gray-600 hover:text-gray-900 transition-colors"
+							aria-current={Astro.url.pathname === "/about" ? "page" : undefined}
+						>
+							About
+						</a>
+					</li>
+					<li>
+						<a
+							href="/contact"
+							class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+							aria-current={Astro.url.pathname === "/contact" ? "page" : undefined}
+						>
+							Contact
+						</a>
+					</li>
+				</ul>
+			</nav>
 
-	if (menuButton && mobileMenu) {
-		menuButton.addEventListener("click", () => {
-			const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
-			menuButton.setAttribute("aria-expanded", String(!isExpanded));
-			mobileMenu.classList.toggle("hidden");
-		});
+			<!-- Mobile menu -->
+			<div
+				id="mobile-menu"
+				class="hidden md:hidden border-t border-gray-200 bg-white"
+				role="menu"
+				aria-labelledby="mobile-menu-button"
+			>
+				<ul class="flex flex-col py-4" role="list">
+					<li>
+						<a
+							href="/links"
+							class="block px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+							role="menuitem"
+							aria-current={Astro.url.pathname === "/links" ? "page" : undefined}
+						>
+							Links
+						</a>
+					</li>
+					<li>
+						<a
+							href="/about"
+							class="block px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+							role="menuitem"
+							aria-current={Astro.url.pathname === "/about" ? "page" : undefined}
+						>
+							About
+						</a>
+					</li>
+					<li>
+						<a
+							href="/contact"
+							class="block px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+							role="menuitem"
+							aria-current={Astro.url.pathname === "/contact" ? "page" : undefined}
+						>
+							Contact
+						</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+	)
+}
 
-		// Close menu when clicking outside
-		document.addEventListener("click", (e) => {
-			if (
-				!menuButton.contains(e.target as Node) &&
-				!mobileMenu.contains(e.target as Node) &&
-				!mobileMenu.classList.contains("hidden")
-			) {
-				menuButton.setAttribute("aria-expanded", "false");
-				mobileMenu.classList.add("hidden");
+{
+	variant === "default" && (
+		<script>
+			// Mobile menu toggle functionality
+			const menuButton = document.getElementById("mobile-menu-button");
+			const mobileMenu = document.getElementById("mobile-menu");
+
+			if (menuButton && mobileMenu) {
+				menuButton.addEventListener("click", () => {
+					const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+					menuButton.setAttribute("aria-expanded", String(!isExpanded));
+					mobileMenu.classList.toggle("hidden");
+				});
+
+				// Close menu when clicking outside
+				document.addEventListener("click", (e) => {
+					if (
+						!menuButton.contains(e.target as Node) &&
+						!mobileMenu.contains(e.target as Node) &&
+						!mobileMenu.classList.contains("hidden")
+					) {
+						menuButton.setAttribute("aria-expanded", "false");
+						mobileMenu.classList.add("hidden");
+					}
+				});
+
+				// Close menu on escape key
+				document.addEventListener("keydown", (e) => {
+					if (e.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+						menuButton.setAttribute("aria-expanded", "false");
+						mobileMenu.classList.add("hidden");
+						menuButton.focus();
+					}
+				});
 			}
-		});
-
-		// Close menu on escape key
-		document.addEventListener("keydown", (e) => {
-			if (e.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
-				menuButton.setAttribute("aria-expanded", "false");
-				mobileMenu.classList.add("hidden");
-				menuButton.focus();
-			}
-		});
-	}
-</script>
+		</script>
+	)
+}

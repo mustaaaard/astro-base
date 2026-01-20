@@ -1,27 +1,27 @@
 ---
-import '../styles/global.css';
-import { SITE } from '../config/site.mjs';
-import type { SEOProps } from '../types/seo';
+import "../styles/global.css";
+import { SITE } from "../config/site.mjs";
+import type { SEOProps } from "../types/seo";
 
 interface Props extends SEOProps {
-  lang?: string;
+	lang?: string;
 }
 
 const {
-  title = SITE.title,
-  description = SITE.description,
-  canonicalURL,
-  ogTitle = title,
-  ogDescription = description,
-  ogImage = SITE.ogImage,
-  ogType = 'website',
-  twitterCard = 'summary_large_image',
-  twitterTitle = ogTitle,
-  twitterDescription = ogDescription,
-  twitterImage = ogImage,
-  noindex = false,
-  nofollow = false,
-  lang = SITE.defaultLanguage,
+	title = SITE.title,
+	description = SITE.description,
+	canonicalURL,
+	ogTitle = title,
+	ogDescription = description,
+	ogImage = SITE.ogImage,
+	ogType = "website",
+	twitterCard = "summary_large_image",
+	twitterTitle = ogTitle,
+	twitterDescription = ogDescription,
+	twitterImage = ogImage,
+	noindex = false,
+	nofollow = false,
+	lang = SITE.defaultLanguage,
 } = Astro.props;
 
 // Construct full URLs
@@ -31,10 +31,10 @@ const siteURL = new URL(canonicalPath, SITE.url);
 
 // Handle image URLs - support both absolute URLs and relative paths
 const getFullImageUrl = (image: string): string => {
-  if (image.startsWith('http://') || image.startsWith('https://')) {
-    return image;
-  }
-  return new URL(image, SITE.url).href;
+	if (image.startsWith("http://") || image.startsWith("https://")) {
+		return image;
+	}
+	return new URL(image, SITE.url).href;
 };
 
 const fullOgImage = getFullImageUrl(ogImage);
@@ -42,9 +42,9 @@ const fullTwitterImage = getFullImageUrl(twitterImage);
 
 // Build robots meta content
 const robotsContent = [
-  noindex ? 'noindex' : 'index',
-  nofollow ? 'nofollow' : 'follow',
-].join(', ');
+	noindex ? "noindex" : "index",
+	nofollow ? "nofollow" : "follow",
+].join(", ");
 ---
 
 <!doctype html>
@@ -54,21 +54,28 @@ const robotsContent = [
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		
+
 		<!-- Resource Hints -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-		
+
+		<!-- Google Fonts -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+			rel="stylesheet"
+		/>
+
 		<!-- Preload Critical Resources -->
 		<link rel="preload" href="/favicon.svg" as="image" type="image/svg+xml" />
-		
+
 		<!-- Primary Meta Tags -->
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
 		<meta name="robots" content={robotsContent} />
 		<link rel="canonical" href={siteURL.href} />
-		
+
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content={ogType} />
 		<meta property="og:url" content={siteURL.href} />
@@ -76,7 +83,7 @@ const robotsContent = [
 		<meta property="og:description" content={ogDescription} />
 		<meta property="og:image" content={fullOgImage} />
 		<meta property="og:site_name" content={SITE.title} />
-		
+
 		<!-- Twitter -->
 		<meta name="twitter:card" content={twitterCard} />
 		<meta name="twitter:url" content={siteURL.href} />

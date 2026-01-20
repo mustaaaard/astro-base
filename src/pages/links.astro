@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { SITE } from "../config/site.mjs";
+
+const links = [
+	{
+		title: "Website",
+		url: "https://mlkkrt.com",
+	},
+	{
+		title: "Instagram",
+		url: "https://instagram.com/milkkrate",
+	},
+	{
+		title: "Twitter / X",
+		url: "https://x.com/milkkrate",
+	},
+	{
+		title: "GitHub",
+		url: "https://github.com/milkkrate",
+	},
+];
+---
+
+<Layout
+	title={`Links | ${SITE.title}`}
+	description="Find all our links in one place."
+	canonicalURL={`${SITE.url}/links`}
+>
+	<main
+		id="main-content"
+		role="main"
+		class="min-h-screen flex items-center justify-center px-4 py-16"
+	>
+		<div class="w-full max-w-md text-center">
+			<img src="/header_logo.svg" alt={SITE.title} class="h-8 mx-auto mb-8" />
+
+			<nav class="space-y-3">
+				{
+					links.map((link) => (
+						// eslint-disable-next-line react/jsx-key
+						<a
+							href={link.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="block w-full py-3 px-6 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors duration-200"
+						>
+							{link.title}
+						</a>
+					))
+				}
+			</nav>
+		</div>
+	</main>
+</Layout>
