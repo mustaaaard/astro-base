@@ -12,7 +12,7 @@ export const SITE = {
 };
 
 export const NAV_LINKS = [
-	{ label: "Links", href: "/links" },
+	{ label: "Quick Links", href: "/links" },
 	// { label: "About", href: "/about" },
 	// { label: "Contact", href: "/contact" },
 ];

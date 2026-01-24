@@ -1,26 +1,23 @@
 ---
 import ScrollReveal from "./ScrollReveal.tsx";
-import { Icon } from "astro-icon/components";
 ---
 
-<section id="about" class="max-w-6xl mx-auto px-4 py-20">
+<section
+	id="about"
+	class="bg-black text-white px-4 py-8 flex justify-center items-center"
+>
 	<ScrollReveal client:idle scale={true}>
-		<div class="bg-black rounded-2xl p-12 text-center text-white">
-			<h2 class="font-display text-4xl font-bold mb-4">
+		<div
+			class="flex justify-center items-center flex-col p-6 text-center min-h-[30vh]"
+		>
+			<h2 class="font-display text-5xl md:text-6xl font-bold mb-2">
 				Ready to Get Started?
 			</h2>
-			<p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-				Start building your next project with this minimal and powerful starter
-				template.
-			</p>
 			<a
-				href="https://github.com/jonnysmillie/astro-base"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="inline-flex items-center gap-2 px-8 py-3 bg-white text-black rounded-lg hover:bg-gray-100 transition-colors font-medium"
+				href="mailto:hello@mlkkrt.com"
+				class="inline-flex items-center gap-2 px-6 py-2 bg-white text-black hover:bg-gray-100 transition-colors font-medium mt-8"
 			>
-				<Icon name="tabler:download" class="w-5 h-5" aria-hidden="true" />
-				Download
+				Reach Out Here
 			</a>
 		</div>
 	</ScrollReveal>

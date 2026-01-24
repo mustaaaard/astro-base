@@ -18,9 +18,9 @@ export default function MilkKrateBox() {
 		texts: string[];
 		className?: string;
 	}) => (
-		<div className={`flex flex-col ${className || ""}`}>
+		<div className={`bg-black flex flex-col ${className || ""}`}>
 			{texts.map((text, i) => (
-				<div key={i} className="text-[#0015ff] font-bold tracking-wider">
+				<div key={i} className="text-white font-bold tracking-wider">
 					{text}
 				</div>
 			))}
@@ -39,7 +39,7 @@ export default function MilkKrateBox() {
 			faces={{
 				front: (
 					<TextFace
-						texts={["YOU CAN", "JUST", "DO THINGS"]}
+						texts={["THE WORLD", "IS YOUR", "OYSTER"]}
 						className="text-right justify-end items-end h-full w-full p-2 select-none"
 					/>
 				),
@@ -50,15 +50,17 @@ export default function MilkKrateBox() {
 					/>
 				),
 				right: (
-					<TextFace
-						texts={["MAKE THINGS", "YOU WISH", "EXISTED"]}
-						className="text-left justify-end h-full w-full p-2 select-none"
+					<img
+						src="/krate_face.png"
+						alt=""
+						className="w-full h-full object-cover"
 					/>
 				),
 				left: (
-					<TextFace
-						texts={["BREAK", "THINGS", "MOVE", "FAST"]}
-						className="items-end w-full h-full p-2 select-none"
+					<img
+						src="/krate_face.png"
+						alt=""
+						className="w-full h-full object-cover"
 					/>
 				),
 				top: (
