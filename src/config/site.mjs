@@ -3,7 +3,7 @@ export const SITE = {
 	description:
 		"Milk Krate is a Singapore-based design lab crafting refined interfaces and physical forms. Designed to be felt.",
 	defaultLanguage: "en",
-	url: "https://mlkkrt.com", // Update this with your actual site URL
+	url: "https://www.mlkkrt.com", // Update this with your actual site URL
 	author: "Milk Krate",
 	ogImage: "/og-image.png", // Add an og-image.png (1200x630px) to public/ for social media previews
 	// Web3Forms: Get your access key from https://web3forms.com
