@@ -1,4 +1,9 @@
 @import "tailwindcss";
+
+html {
+  color-scheme: light;
+  background-color: #fff;
+}
 @plugin "@tailwindcss/typography";
 
 /* Accessibility: Skip to content link */
