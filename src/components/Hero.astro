@@ -1,10 +1,13 @@
 ---
 import MilkKrateBox from "./MilkKrateBox";
 import ScrollReveal from "./ScrollReveal.tsx";
-import { Icon } from "astro-icon/components";
+// import { Icon } from "astro-icon/components";
 ---
 
-<section class="px-4 py-8 md:py-12 text-center" aria-labelledby="hero-heading">
+<section
+	class="mt-12 px-4 py-12 md:py-8 text-center"
+	aria-labelledby="hero-heading"
+>
 	<ScrollReveal client:load>
 		<div class="flex justify-center items-center flex-col gap-8">
 			<MilkKrateBox client:load />
